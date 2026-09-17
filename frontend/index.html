@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Task Manager 💗</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+    <!-- ================= LOGIN & REGISTER ================= -->
+
+    <div class="auth-container" id="authContainer">
+
+
+        <!-- Welcome Section -->
+
+        <div class="welcome-section">
+
+            <div class="emoji">
+                ✨
+            </div>
+
+            <h1>
+                Task Manager 💗
+            </h1>
+
+            <p>
+                Organize your tasks.<br>
+                Stay productive.<br>
+                Get things done! 🚀
+            </p>
+
+        </div>
+
+
+        <!-- Form Section -->
+
+        <div class="form-section">
+
+
+            <!-- ================= LOGIN ================= -->
+
+            <div id="loginSection">
+
+                <div class="form-icon">
+                    🔐
+                </div>
+
+                <h2>
+                    Welcome Back! 👋
+                </h2>
+
+                <p class="subtitle">
+                    Login to manage your tasks
+                </p>
+
+
+                <form id="loginForm">
+
+                    <input
+                        type="email"
+                        id="loginEmail"
+                        placeholder="📧 Email"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        id="loginPassword"
+                        placeholder="🔑 Password"
+                        required
+                    >
+
+                    <button type="submit">
+                        Login ✨
+                    </button>
+
+                </form>
+
+
+                <p class="switch-text">
+
+                    Don't have an account?
+
+                    <a href="#" id="showRegister">
+                        Create Account 💗
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <!-- ================= REGISTER ================= -->
+
+            <div id="registerSection" style="display: none;">
+
+                <div class="form-icon">
+                    🌸
+                </div>
+
+                <h2>
+                    Create Account ✨
+                </h2>
+
+                <p class="subtitle">
+                    Join us and start organizing your tasks
+                </p>
+
+
+                <form id="registerForm">
+
+                    <input
+                        type="text"
+                        id="name"
+                        placeholder="👤 Name"
+                        required
+                    >
+
+                    <input
+                        type="email"
+                        id="email"
+                        placeholder="📧 Email"
+                        required
+                    >
+
+                    <input
+                        type="text"
+                        id="phone"
+                        placeholder="📱 Phone"
+                        required
+                    >
+
+                    <input
+                        type="password"
+                        id="password"
+                        placeholder="🔑 Password"
+                        required
+                    >
+
+                    <button type="submit">
+                        Create Account 💗
+                    </button>
+
+                </form>
+
+
+                <p class="switch-text">
+
+                    Already have an account?
+
+                    <a href="#" id="showLogin">
+                        Login 🔐
+                    </a>
+
+                </p>
+
+            </div>
+
+
+            <!-- Message -->
+
+            <p id="message"></p>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- ================= DASHBOARD ================= -->
+
+    <div id="dashboard" style="display: none;">
+
+
+        <!-- Dashboard Header -->
+
+        <header class="dashboard-header">
+
+            <div>
+
+                <h1>
+                    My Tasks 💗
+                </h1>
+
+                <p>
+                    Organize your day and get things done! ✨
+                </p>
+
+            </div>
+
+
+            <button id="logoutButton">
+                Logout 🚪
+            </button>
+
+        </header>
+
+
+
+        <!-- Dashboard Content -->
+
+        <main class="dashboard-content">
+
+
+            <!-- ================= TASK STATS ================= -->
+
+            <div class="task-stats">
+
+                <div class="stat-card">
+
+                    <h3 id="totalTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        📋 Total Tasks
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <h3 id="pendingTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        ⏳ Pending
+                    </p>
+
+                </div>
+
+
+                <div class="stat-card">
+
+                    <h3 id="completedTasks">
+                        0
+                    </h3>
+
+                    <p>
+                        ✅ Completed
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- ================= ADD TASK ================= -->
+
+            <div class="add-task-card">
+
+                <h2>
+                    Add New Task 📝
+                </h2>
+
+
+                <form id="taskForm">
+
+                    <input
+                        type="text"
+                        id="taskTitle"
+                        placeholder="📝 Task title"
+                        required
+                    >
+
+
+                    <textarea
+                        id="taskDescription"
+                        placeholder="📄 Task description"
+                    ></textarea>
+
+
+                    <select id="taskStatus">
+
+                        <option value="pending">
+                            Pending ⏳
+                        </option>
+
+                        <option value="completed">
+                            Completed ✅
+                        </option>
+
+                    </select>
+
+
+                    <button type="submit">
+                        Add Task ✨
+                    </button>
+
+                </form>
+
+            </div>
+
+
+
+            <!-- ================= TASK LIST ================= -->
+
+            <div class="tasks-section">
+
+                <h2>
+                    Your Tasks 📋
+                </h2>
+
+
+                <div id="taskList">
+
+                    <!-- Tasks will appear here -->
+
+                </div>
+
+
+
+                <!-- ================= EDIT TASK ================= -->
+
+                <div
+                    id="editTaskCard"
+                    class="add-task-card"
+                    style="display: none;"
+                >
+
+                    <h2>
+                        Edit Task ✏️
+                    </h2>
+
+
+                    <form id="editTaskForm">
+
+                        <input
+                            type="text"
+                            id="editTaskTitle"
+                            placeholder="📝 Task title"
+                            required
+                        >
+
+
+                        <textarea
+                            id="editTaskDescription"
+                            placeholder="📄 Task description"
+                        ></textarea>
+
+
+                        <select id="editTaskStatus">
+
+                            <option value="pending">
+                                Pending ⏳
+                            </option>
+
+                            <option value="completed">
+                                Completed ✅
+                            </option>
+
+                        </select>
+
+
+                        <button type="submit">
+                            Save Changes 💗
+                        </button>
+
+
+                        <button
+                            type="button"
+                            id="cancelEdit"
+                            class="cancel-btn"
+                        >
+                            Cancel
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
